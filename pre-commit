@@ -1,0 +1,9 @@
+#!/bin/bash
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+REGEX="^(feature|bugfix|release|hotfix)\/[a-z0-9._-]+$"
+
+if ! [[ $BRANCH =~ $REGEX ]]; then
+  echo "Your commit was rejected because don't follow of pattern"
+  echo "Please, change name of your branch to something equal '(feature|bugfix|release|hotfix)/something' "
+  exit 1
+fi
